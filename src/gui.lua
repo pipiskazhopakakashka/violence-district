@@ -1,5 +1,4 @@
--- Violence District Pro Panel (GUI)
--- Professional Non-AI UI with SVG Icons from GitHub
+-- Violence District - Neverlose Style Pro UI (1-1 Aesthetics)
 
 local Players = game:GetService("Players")
 local CoreGui = game:GetService("CoreGui")
@@ -7,18 +6,18 @@ local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local LocalPlayer = Players.LocalPlayer
 
--- Remove existing GUI if any
+-- Remove existing GUI
 pcall(function()
-    if CoreGui:FindFirstChild("ViolenceDistrictPro") then
-        CoreGui.ViolenceDistrictPro:Destroy()
+    if CoreGui:FindFirstChild("NeverloseViolenceDistrict") then
+        CoreGui.NeverloseViolenceDistrict:Destroy()
     end
-    if LocalPlayer.PlayerGui:FindFirstChild("ViolenceDistrictPro") then
-        LocalPlayer.PlayerGui.ViolenceDistrictPro:Destroy()
+    if LocalPlayer.PlayerGui:FindFirstChild("NeverloseViolenceDistrict") then
+        LocalPlayer.PlayerGui.NeverloseViolenceDistrict:Destroy()
     end
 end)
 
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "ViolenceDistrictPro"
+ScreenGui.Name = "NeverloseViolenceDistrict"
 ScreenGui.ResetOnSpawn = false
 pcall(function()
     ScreenGui.Parent = CoreGui
@@ -27,68 +26,120 @@ if not ScreenGui.Parent then
     ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 end
 
--- Base URLs for SVG assets on GitHub
-local githubBase = "https://raw.githubusercontent.com/pipiskazhopakakashka/violence-district/arena/019fd39e-violence-district/assets/"
-local icons = {
-    Home = githubBase .. "home.svg",
-    Combat = githubBase .. "combat.svg",
-    ESP = githubBase .. "esp.svg",
-    Generator = githubBase .. "generator.svg",
-    Teleport = githubBase .. "teleport.svg",
-    Settings = githubBase .. "settings.svg"
-}
-
--- Main Window Frame
+-- Main Window (Neverlose Dark Theme)
 local MainFrame = Instance.new("Frame")
 MainFrame.Name = "MainFrame"
-MainFrame.Size = UDim2.new(0, 580, 0, 380)
-MainFrame.Position = UDim2.new(0.5, -290, 0.5, -190)
-MainFrame.BackgroundColor3 = Color3.fromRGB(18, 18, 24)
+MainFrame.Size = UDim2.new(0, 840, 0, 530)
+MainFrame.Position = UDim2.new(0.5, -420, 0.5, -265)
+MainFrame.BackgroundColor3 = Color3.fromRGB(12, 16, 23)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 
 local MainCorner = Instance.new("UICorner")
-MainCorner.CornerRadius = UDim.new(0, 10)
+MainCorner.CornerRadius = UDim.new(0, 8)
 MainCorner.Parent = MainFrame
 
 local MainStroke = Instance.new("UIStroke")
-MainStroke.Color = Color3.fromRGB(80, 80, 120)
-MainStroke.Thickness = 1.5
+MainStroke.Color = Color3.fromRGB(35, 45, 64)
+MainStroke.Thickness = 1
 MainStroke.Parent = MainFrame
 
--- Top Bar (Dragging & Title)
+-- Top Bar
 local TopBar = Instance.new("Frame")
 TopBar.Name = "TopBar"
-TopBar.Size = UDim2.new(1, 0, 0, 45)
-TopBar.BackgroundColor3 = Color3.fromRGB(24, 24, 32)
+TopBar.Size = UDim2.new(1, 0, 0, 48)
+TopBar.BackgroundColor3 = Color3.fromRGB(15, 20, 28)
 TopBar.BorderSizePixel = 0
 TopBar.Parent = MainFrame
 
 local TopCorner = Instance.new("UICorner")
-TopCorner.CornerRadius = UDim.new(0, 10)
+TopCorner.CornerRadius = UDim.new(0, 8)
 TopCorner.Parent = TopBar
 
-local TitleLabel = Instance.new("TextLabel")
-TitleLabel.Size = UDim2.new(0, 300, 1, 0)
-TitleLabel.Position = UDim2.new(0, 15, 0, 0)
-TitleLabel.BackgroundTransparency = 1
-TitleLabel.Font = Enum.Font.GothamBold
-TitleLabel.Text = "VIOLENCE DISTRICT <font color='#7b61ff'>PRO HUB</font>"
-TitleLabel.RichText = true
-TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-TitleLabel.TextSize = 16
-TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
-TitleLabel.Parent = TopBar
+-- Logo "NEVERLOSE" style
+local LogoLabel = Instance.new("TextLabel")
+LogoLabel.Size = UDim2.new(0, 180, 1, 0)
+LogoLabel.Position = UDim2.new(0, 16, 0, 0)
+LogoLabel.BackgroundTransparency = 1
+LogoLabel.Font = Enum.Font.GothamBold
+LogoLabel.Text = "NEVER<font color='#2772ee'>LOSE</font>"
+LogoLabel.RichText = true
+LogoLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+LogoLabel.TextSize = 16
+LogoLabel.TextXAlignment = Enum.TextXAlignment.Left
+LogoLabel.Parent = TopBar
+
+-- Sub-logo / Game tag
+local GameTag = Instance.new("TextLabel")
+GameTag.Size = UDim2.new(0, 150, 1, 0)
+GameTag.Position = UDim2.new(0, 140, 0, 0)
+GameTag.BackgroundTransparency = 1
+GameTag.Font = Enum.Font.GothamMedium
+GameTag.Text = "[ VIOLENCE DISTRICT ]"
+GameTag.TextColor3 = Color3.fromRGB(120, 135, 160)
+GameTag.TextSize = 11
+GameTag.TextXAlignment = Enum.TextXAlignment.Left
+GameTag.Parent = TopBar
+
+-- Save Button in TopBar
+local SaveBtn = Instance.new("TextButton")
+SaveBtn.Size = UDim2.new(0, 75, 0, 28)
+SaveBtn.Position = UDim2.new(0, 310, 0.5, -14)
+SaveBtn.BackgroundColor3 = Color3.fromRGB(22, 30, 43)
+SaveBtn.Font = Enum.Font.GothamMedium
+SaveBtn.Text = "Save"
+SaveBtn.TextColor3 = Color3.fromRGB(200, 210, 230)
+SaveBtn.TextSize = 12
+SaveBtn.Parent = TopBar
+
+local SaveCorner = Instance.new("UICorner")
+SaveCorner.CornerRadius = UDim.new(0, 6)
+SaveCorner.Parent = SaveBtn
+
+local SaveStroke = Instance.new("UIStroke")
+SaveStroke.Color = Color3.fromRGB(45, 60, 85)
+SaveStroke.Thickness = 1
+SaveStroke.Parent = SaveBtn
+
+SaveBtn.MouseButton1Click:Connect(function()
+    SaveBtn.Text = "Saved!"
+    task.delay(1.5, function()
+        SaveBtn.Text = "Save"
+    end)
+end)
+
+-- Global Config Dropdown selector in TopBar
+local ConfigBox = Instance.new("Frame")
+ConfigBox.Size = UDim2.new(0, 150, 0, 28)
+ConfigBox.Position = UDim2.new(0, 400, 0.5, -14)
+ConfigBox.BackgroundColor3 = Color3.fromRGB(22, 30, 43)
+ConfigBox.BorderSizePixel = 0
+ConfigBox.Parent = TopBar
+
+local ConfigCorner = Instance.new("UICorner")
+ConfigCorner.CornerRadius = UDim.new(0, 6)
+ConfigCorner.Parent = ConfigBox
+
+local ConfigText = Instance.new("TextLabel")
+ConfigText.Size = UDim2.new(1, -15, 1, 0)
+ConfigText.Position = UDim2.new(0, 10, 0, 0)
+ConfigText.BackgroundTransparency = 1
+ConfigText.Font = Enum.Font.GothamMedium
+ConfigText.Text = "Global v1"
+ConfigText.TextColor3 = Color3.fromRGB(220, 230, 250)
+ConfigText.TextSize = 12
+ConfigText.TextXAlignment = Enum.TextXAlignment.Left
+ConfigText.Parent = ConfigBox
 
 -- Close Button
 local CloseBtn = Instance.new("TextButton")
-CloseBtn.Size = UDim2.new(0, 30, 0, 30)
-CloseBtn.Position = UDim2.new(1, -35, 0.5, -15)
-CloseBtn.BackgroundColor3 = Color3.fromRGB(220, 50, 50)
-CloseBtn.Text = "X"
-CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.Size = UDim2.new(0, 32, 0, 32)
+CloseBtn.Position = UDim2.new(1, -40, 0.5, -16)
+CloseBtn.BackgroundColor3 = Color3.fromRGB(180, 40, 40)
 CloseBtn.Font = Enum.Font.GothamBold
-CloseBtn.TextSize = 14
+CloseBtn.Text = "×"
+CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.TextSize = 18
 CloseBtn.Parent = TopBar
 
 local CloseCorner = Instance.new("UICorner")
@@ -99,7 +150,7 @@ CloseBtn.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
 end)
 
--- Make Draggable
+-- Make Window Draggable
 local dragging, dragInput, dragStart, startPos
 TopBar.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -123,62 +174,213 @@ UserInputService.InputChanged:Connect(function(input)
     end
 end)
 
--- Sidebar Navigation
+-- Left Sidebar
 local Sidebar = Instance.new("ScrollingFrame")
 Sidebar.Name = "Sidebar"
-Sidebar.Size = UDim2.new(0, 150, 1, -45)
-Sidebar.Position = UDim2.new(0, 0, 0, 45)
-Sidebar.BackgroundColor3 = Color3.fromRGB(22, 22, 30)
+Sidebar.Size = UDim2.new(0, 175, 1, -48)
+Sidebar.Position = UDim2.new(0, 0, 0, 48)
+Sidebar.BackgroundColor3 = Color3.fromRGB(10, 13, 19)
 Sidebar.BorderSizePixel = 0
 Sidebar.ScrollBarThickness = 2
 Sidebar.Parent = MainFrame
 
-local UIListLayout = Instance.new("UIListLayout")
-UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIListLayout.Padding = UDim.new(0, 5)
-UIListLayout.Parent = Sidebar
+local SidebarList = Instance.new("UIListLayout")
+SidebarList.SortOrder = Enum.SortOrder.LayoutOrder
+SidebarList.Padding = UDim.new(0, 2)
+SidebarList.Parent = Sidebar
 
--- Content Container
-local ContentContainer = Instance.new("Frame")
-ContentContainer.Name = "ContentContainer"
-ContentContainer.Size = UDim2.new(1, -150, 1, -45)
-ContentContainer.Position = UDim2.new(0, 150, 0, 45)
-ContentContainer.BackgroundTransparency = 1
-ContentContainer.Parent = MainFrame
+local SidebarPadding = Instance.new("UIPadding")
+SidebarPadding.PaddingTop = UDim.new(0, 12)
+SidebarPadding.PaddingBottom = UDim.new(0, 70)
+SidebarPadding.Parent = Sidebar
+
+-- User Profile Box at bottom of Sidebar
+local UserProfile = Instance.new("Frame")
+UserProfile.Size = UDim2.new(1, -16, 0, 55)
+UserProfile.Position = UDim2.new(0, 8, 1, -63)
+UserProfile.BackgroundColor3 = Color3.fromRGB(16, 22, 32)
+UserProfile.BorderSizePixel = 0
+UserProfile.Parent = Sidebar
+
+local UserCorner = Instance.new("UICorner")
+UserCorner.CornerRadius = UDim.new(0, 6)
+UserCorner.Parent = UserProfile
+
+local AvatarCircle = Instance.new("Frame")
+AvatarCircle.Size = UDim2.new(0, 34, 0, 34)
+AvatarCircle.Position = UDim2.new(0, 10, 0.5, -17)
+AvatarCircle.BackgroundColor3 = Color3.fromRGB(39, 114, 238)
+AvatarCircle.Parent = UserProfile
+
+local AvatarCorner = Instance.new("UICorner")
+AvatarCorner.CornerRadius = UDim.new(1, 0)
+AvatarCorner.Parent = AvatarCircle
+
+local AvatarText = Instance.new("TextLabel")
+AvatarText.Size = UDim2.new(1, 0, 1, 0)
+AvatarText.BackgroundTransparency = 1
+AvatarText.Font = Enum.Font.GothamBold
+AvatarText.Text = "VD"
+AvatarText.TextColor3 = Color3.fromRGB(255, 255, 255)
+AvatarText.TextSize = 13
+AvatarText.Parent = AvatarCircle
+
+local UserName = Instance.new("TextLabel")
+UserName.Size = UDim2.new(0, 100, 0, 16)
+UserName.Position = UDim2.new(0, 52, 0, 11)
+UserName.BackgroundTransparency = 1
+UserName.Font = Enum.Font.GothamBold
+UserName.Text = "PAKETA"
+UserName.TextColor3 = Color3.fromRGB(240, 245, 255)
+UserName.TextSize = 12
+UserName.TextXAlignment = Enum.TextXAlignment.Left
+UserName.Parent = UserProfile
+
+local UserStatus = Instance.new("TextLabel")
+UserStatus.Size = UDim2.new(0, 100, 0, 14)
+UserStatus.Position = UDim2.new(0, 52, 0, 27)
+UserStatus.BackgroundTransparency = 1
+UserStatus.Font = Enum.Font.GothamMedium
+UserStatus.Text = "Till: <font color='#2772ee'>01.01 03:00</font>"
+UserStatus.RichText = true
+UserStatus.TextColor3 = Color3.fromRGB(130, 145, 170)
+UserStatus.TextSize = 10
+UserStatus.TextXAlignment = Enum.TextXAlignment.Left
+UserStatus.Parent = UserProfile
+
+-- Content Area (Left side of content & Right preview)
+local ContentArea = Instance.new("Frame")
+ContentArea.Name = "ContentArea"
+ContentArea.Size = UDim2.new(1, -175, 1, -48)
+ContentArea.Position = UDim2.new(0, 175, 0, 48)
+ContentArea.BackgroundColor3 = Color3.fromRGB(12, 16, 23)
+ContentArea.BorderSizePixel = 0
+ContentArea.Parent = MainFrame
+
+-- Right Preview Panel (Like Neverlose Legitbot Bones)
+local RightPreview = Instance.new("Frame")
+RightPreview.Name = "RightPreview"
+RightPreview.Size = UDim2.new(0, 260, 1, -20)
+RightPreview.Position = UDim2.new(1, -270, 0, 10)
+RightPreview.BackgroundColor3 = Color3.fromRGB(15, 20, 28)
+RightPreview.BorderSizePixel = 0
+RightPreview.Parent = ContentArea
+
+local PreviewCorner = Instance.new("UICorner")
+PreviewCorner.CornerRadius = UDim.new(0, 8)
+PreviewCorner.Parent = RightPreview
+
+local PreviewStroke = Instance.new("UIStroke")
+PreviewStroke.Color = Color3.fromRGB(30, 40, 58)
+PreviewStroke.Thickness = 1
+PreviewStroke.Parent = RightPreview
+
+local PreviewTitle = Instance.new("TextLabel")
+PreviewTitle.Size = UDim2.new(1, 0, 0, 35)
+PreviewTitle.Position = UDim2.new(0, 0, 0, 5)
+PreviewTitle.BackgroundTransparency = 1
+PreviewTitle.Font = Enum.Font.GothamBold
+PreviewTitle.Text = "Violence District Status"
+PreviewTitle.TextColor3 = Color3.fromRGB(200, 215, 240)
+PreviewTitle.TextSize = 13
+PreviewTitle.Parent = RightPreview
+
+-- Status Cards inside RightPreview
+local function addStatusCard(parent, yPos, title, value)
+    local card = Instance.new("Frame")
+    card.Size = UDim2.new(1, -24, 0, 50)
+    card.Position = UDim2.new(0, 12, 0, yPos)
+    card.BackgroundColor3 = Color3.fromRGB(20, 26, 38)
+    card.BorderSizePixel = 0
+    card.Parent = parent
+
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(0, 6)
+    corner.Parent = card
+
+    local tLbl = Instance.new("TextLabel")
+    tLbl.Size = UDim2.new(1, -20, 0, 20)
+    tLbl.Position = UDim2.new(0, 10, 0, 6)
+    tLbl.BackgroundTransparency = 1
+    tLbl.Font = Enum.Font.GothamMedium
+    tLbl.Text = title
+    tLbl.TextColor3 = Color3.fromRGB(130, 145, 170)
+    tLbl.TextSize = 11
+    tLbl.TextXAlignment = Enum.TextXAlignment.Left
+    tLbl.Parent = card
+
+    local vLbl = Instance.new("TextLabel")
+    vLbl.Size = UDim2.new(1, -20, 0, 20)
+    vLbl.Position = UDim2.new(0, 10, 0, 24)
+    vLbl.BackgroundTransparency = 1
+    vLbl.Font = Enum.Font.GothamBold
+    vLbl.Text = value
+    vLbl.TextColor3 = Color3.fromRGB(39, 114, 238)
+    vLbl.TextSize = 13
+    vLbl.TextXAlignment = Enum.TextXAlignment.Left
+    vLbl.Parent = card
+    
+    return vLbl
+end
+
+addStatusCard(RightPreview, 45, "CURRENT TARGET", "None / Scanning")
+local genStatusLbl = addStatusCard(RightPreview, 105, "AUTO GENERATOR", "Stopped / Ready")
+local daggerStatusLbl = addStatusCard(RightPreview, 165, "NO CD DAGGER", "Inactive")
+local espStatusLbl = addStatusCard(RightPreview, 225, "ESP / WALLHACK", "Active")
+
+-- Tabs Container (Left side of ContentArea)
+local TabsContainer = Instance.new("Frame")
+TabsContainer.Size = UDim2.new(1, -280, 1, 0)
+TabsContainer.Position = UDim2.new(0, 0, 0, 0)
+TabsContainer.BackgroundTransparency = 1
+TabsContainer.Parent = ContentArea
 
 local tabs = {}
-local activeTab = nil
+local activeTabName = nil
 
-local function createTab(name, iconUrl)
-    local tabBtn = Instance.new("TextButton")
-    tabBtn.Size = UDim2.new(1, 0, 0, 40)
-    tabBtn.BackgroundTransparency = 1
-    tabBtn.Font = Enum.Font.GothamMedium
-    tabBtn.Text = "   " .. name
-    tabBtn.TextColor3 = Color3.fromRGB(160, 160, 180)
-    tabBtn.TextSize = 14
-    tabBtn.TextXAlignment = Enum.TextXAlignment.Left
-    tabBtn.Parent = Sidebar
+local function createCategoryHeader(text)
+    local lbl = Instance.new("TextLabel")
+    lbl.Size = UDim2.new(1, 0, 0, 28)
+    lbl.BackgroundTransparency = 1
+    lbl.Font = Enum.Font.GothamBold
+    lbl.Text = "  " .. text:upper()
+    lbl.TextColor3 = Color3.fromRGB(85, 100, 125)
+    lbl.TextSize = 10
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = Sidebar
+end
 
-    local iconImg = Instance.new("ImageLabel")
-    iconImg.Size = UDim2.new(0, 20, 0, 20)
-    iconImg.Position = UDim2.new(0, 15, 0.5, -10)
-    iconImg.BackgroundTransparency = 1
-    iconImg.Image = iconUrl
-    iconImg.Parent = tabBtn
+local function createTabButton(catName, tabName)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(1, 0, 0, 32)
+    btn.BackgroundTransparency = 1
+    btn.Font = Enum.Font.GothamMedium
+    btn.Text = "     " .. tabName
+    btn.TextColor3 = Color3.fromRGB(140, 155, 180)
+    btn.TextSize = 12
+    btn.TextXAlignment = Enum.TextXAlignment.Left
+    btn.Parent = Sidebar
+
+    local indicator = Instance.new("Frame")
+    indicator.Size = UDim2.new(0, 3, 0, 16)
+    indicator.Position = UDim2.new(0, 0, 0.5, -8)
+    indicator.BackgroundColor3 = Color3.fromRGB(39, 114, 238)
+    indicator.BorderSizePixel = 0
+    indicator.BackgroundTransparency = 1
+    indicator.Parent = btn
 
     local tabContent = Instance.new("ScrollingFrame")
-    tabContent.Name = name .. "Content"
+    tabContent.Name = tabName .. "Content"
     tabContent.Size = UDim2.new(1, 0, 1, 0)
     tabContent.BackgroundTransparency = 1
     tabContent.Visible = false
     tabContent.ScrollBarThickness = 4
-    tabContent.CanvasSize = UDim2.new(0, 0, 1.5, 0)
-    tabContent.Parent = ContentContainer
+    tabContent.CanvasSize = UDim2.new(0, 0, 1.4, 0)
+    tabContent.Parent = TabsContainer
 
     local list = Instance.new("UIListLayout")
     list.SortOrder = Enum.SortOrder.LayoutOrder
-    list.Padding = UDim.new(0, 10)
+    list.Padding = UDim.new(0, 12)
     list.Parent = tabContent
 
     local padding = Instance.new("UIPadding")
@@ -187,68 +389,121 @@ local function createTab(name, iconUrl)
     padding.PaddingRight = UDim.new(0, 15)
     padding.Parent = tabContent
 
-    tabBtn.MouseButton1Click:Connect(function()
+    btn.MouseButton1Click:Connect(function()
         for _, t in pairs(tabs) do
             t.content.Visible = false
-            t.button.TextColor3 = Color3.fromRGB(160, 160, 180)
+            t.button.TextColor3 = Color3.fromRGB(140, 155, 180)
             t.button.BackgroundColor3 = Color3.fromRGB(0,0,0)
             t.button.BackgroundTransparency = 1
+            t.indicator.BackgroundTransparency = 1
         end
         tabContent.Visible = true
-        tabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        tabBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 42)
-        tabBtn.BackgroundTransparency = 0
+        btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        btn.BackgroundColor3 = Color3.fromRGB(18, 24, 34)
+        btn.BackgroundTransparency = 0
+        indicator.BackgroundTransparency = 0
+        activeTabName = tabName
     end)
 
-    if not activeTab then
-        activeTab = tabContent
+    if not activeTabName then
+        activeTabName = tabName
         tabContent.Visible = true
-        tabBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-        tabBtn.BackgroundColor3 = Color3.fromRGB(30, 30, 42)
-        tabBtn.BackgroundTransparency = 0
+        btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+        btn.BackgroundColor3 = Color3.fromRGB(18, 24, 34)
+        btn.BackgroundTransparency = 0
+        indicator.BackgroundTransparency = 0
     end
 
-    tabs[name] = {button = tabBtn, content = tabContent}
+    tabs[tabName] = {button = btn, content = tabContent, indicator = indicator}
     return tabContent
 end
 
--- Helper for Toggles
-local function addToggle(parent, title, default, callback)
-    local frame = Instance.new("Frame")
-    frame.Size = UDim2.new(1, 0, 0, 45)
-    frame.BackgroundColor3 = Color3.fromRGB(26, 26, 36)
-    frame.BorderSizePixel = 0
-    frame.Parent = parent
+-- Build Neverlose Sidebar Structure
+createCategoryHeader("Aimbot / Combat")
+local combatTab = createTabButton("Aimbot", "Rage / Combat")
+local legitTab = createTabButton("Aimbot", "Legit / Dagger")
+
+createCategoryHeader("Visuals")
+local playersTab = createTabButton("Visuals", "Players & ESP")
+local worldTab = createTabButton("Visuals", "World & Generator")
+
+createCategoryHeader("Miscellaneous")
+local mainMiscTab = createTabButton("Misc", "Main & Farm")
+local teleportTab = createTabButton("Misc", "Teleports")
+local configsTab = createTabButton("Misc", "Configs & Settings")
+
+-- UI Helpers (Neverlose style Section Cards, Toggles, Sliders)
+local function createSectionCard(parent, title, height)
+    local card = Instance.new("Frame")
+    card.Size = UDim2.new(1, 0, 0, height)
+    card.BackgroundColor3 = Color3.fromRGB(15, 20, 28)
+    card.BorderSizePixel = 0
+    card.Parent = parent
 
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 6)
-    corner.Parent = frame
+    corner.Parent = card
 
-    local label = Instance.new("TextLabel")
-    label.Size = UDim2.new(1, -60, 1, 0)
-    label.Position = UDim2.new(0, 15, 0, 0)
-    label.BackgroundTransparency = 1
-    label.Font = Enum.Font.GothamMedium
-    label.Text = title
-    label.TextColor3 = Color3.fromRGB(220, 220, 240)
-    label.TextSize = 13
-    label.TextXAlignment = Enum.TextXAlignment.Left
-    label.Parent = frame
+    local stroke = Instance.new("UIStroke")
+    stroke.Color = Color3.fromRGB(30, 40, 58)
+    stroke.Thickness = 1
+    stroke.Parent = card
+
+    local titleLbl = Instance.new("TextLabel")
+    titleLbl.Size = UDim2.new(1, -20, 0, 30)
+    titleLbl.Position = UDim2.new(0, 12, 0, 0)
+    titleLbl.BackgroundTransparency = 1
+    titleLbl.Font = Enum.Font.GothamBold
+    titleLbl.Text = title
+    titleLbl.TextColor3 = Color3.fromRGB(220, 230, 250)
+    titleLbl.TextSize = 12
+    titleLbl.TextXAlignment = Enum.TextXAlignment.Left
+    titleLbl.Parent = card
+
+    local innerList = Instance.new("UIListLayout")
+    innerList.SortOrder = Enum.SortOrder.LayoutOrder
+    innerList.Padding = UDim.new(0, 10)
+    innerList.Parent = card
+
+    local innerPadding = Instance.new("UIPadding")
+    innerPadding.PaddingTop = UDim.new(0, 35)
+    innerPadding.PaddingLeft = UDim.new(0, 12)
+    innerPadding.PaddingRight = UDim.new(0, 12)
+    innerPadding.Parent = card
+
+    return card
+end
+
+local function addToggleToCard(card, title, default, callback)
+    local row = Instance.new("Frame")
+    row.Size = UDim2.new(1, 0, 0, 28)
+    row.BackgroundTransparency = 1
+    row.Parent = card
+
+    local lbl = Instance.new("TextLabel")
+    lbl.Size = UDim2.new(1, -50, 1, 0)
+    lbl.BackgroundTransparency = 1
+    lbl.Font = Enum.Font.GothamMedium
+    lbl.Text = title
+    lbl.TextColor3 = Color3.fromRGB(180, 195, 220)
+    lbl.TextSize = 12
+    lbl.TextXAlignment = Enum.TextXAlignment.Left
+    lbl.Parent = row
 
     local btn = Instance.new("TextButton")
-    btn.Size = UDim2.new(0, 40, 0, 22)
-    btn.Position = UDim2.new(1, -50, 0.5, -11)
-    btn.BackgroundColor3 = default and Color3.fromRGB(123, 97, 255) or Color3.fromRGB(50, 50, 70)
+    btn.Size = UDim2.new(0, 36, 0, 20)
+    btn.Position = UDim2.new(1, -36, 0.5, -10)
+    btn.BackgroundColor3 = default and Color3.fromRGB(39, 114, 238) or Color3.fromRGB(30, 40, 58)
     btn.Text = ""
-    btn.Parent = frame
+    btn.Parent = row
 
     local btnCorner = Instance.new("UICorner")
     btnCorner.CornerRadius = UDim.new(1, 0)
     btnCorner.Parent = btn
 
     local circle = Instance.new("Frame")
-    circle.Size = UDim2.new(0, 18, 0, 18)
-    circle.Position = default and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9)
+    circle.Size = UDim2.new(0, 16, 0, 16)
+    circle.Position = default and UDim2.new(1, -18, 0.5, -8) or UDim2.new(0, 2, 0.5, -8)
     circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     circle.Parent = btn
 
@@ -260,81 +515,55 @@ local function addToggle(parent, title, default, callback)
 
     btn.MouseButton1Click:Connect(function()
         state = not state
-        local targetPos = state and UDim2.new(1, -20, 0.5, -9) or UDim2.new(0, 2, 0.5, -9)
-        local targetColor = state and Color3.fromRGB(123, 97, 255) or Color3.fromRGB(50, 50, 70)
+        local targetPos = state and UDim2.new(1, -18, 0.5, -8) or UDim2.new(0, 2, 0.5, -8)
+        local targetColor = state and Color3.fromRGB(39, 114, 238) or Color3.fromRGB(30, 40, 58)
         
-        TweenService:Create(circle, TweenInfo.new(0.2), {Position = targetPos}):Play()
-        TweenService:Create(btn, TweenInfo.new(0.2), {BackgroundColor3 = targetColor}):Play()
+        TweenService:Create(circle, TweenInfo.new(0.15), {Position = targetPos}):Play()
+        TweenService:Create(btn, TweenInfo.new(0.15), {BackgroundColor3 = targetColor}):Play()
         
         pcall(function() callback(state) end)
     end)
 end
 
--- Create Tabs
-local homeTab = createTab("Home", icons.Home)
-local combatTab = createTab("Combat", icons.Combat)
-local espTab = createTab("ESP / WH", icons.ESP)
-local genTab = createTab("Generator", icons.Generator)
-local teleTab = createTab("Teleports", icons.Teleport)
-local setTab = createTag("Settings", icons.Settings)
+-- Populate Tabs with Neverlose cards & toggles
 
--- Home Tab Content
-local welcomeLbl = Instance.new("TextLabel")
-welcomeLbl.Size = UDim2.new(1, 0, 0, 60)
-welcomeLbl.BackgroundTransparency = 1
-welcomeLbl.Font = Enum.Font.GothamBold
-welcomeLbl.Text = "Welcome to Violence District Pro Hub!\nFully working script with Auto Generator fix & No CD Dagger."
-welcomeLbl.TextColor3 = Color3.fromRGB(200, 200, 220)
-welcomeLbl.TextSize = 13
-welcomeLbl.TextXAlignment = Enum.TextXAlignment.Left
-welcomeLbl.TextWrapped = true
-welcomeLbl.Parent = homeTab
-
--- Combat Tab
-addToggle(combatTab, "No CD Dagger (Instant Attack)", false, function(v)
+-- 1. Combat Tab
+local combatCard = createSectionCard(combatTab, "Dagger & Combat Settings", 130)
+addToggleToCard(combatCard, "No CD Dagger (Instant Attack)", false, function(v)
     getgenv().NoCDDagger = v
+    daggerStatusLbl.Text = v and "Active" or "Inactive"
+    daggerStatusLbl.TextColor3 = v and Color3.fromRGB(39, 114, 238) or Color3.fromRGB(130, 145, 170)
 end)
-
--- ESP Tab
-addToggle(espTab, "Enable ESP (Wallhack)", true, function(v)
-    getgenv().ESP_Settings.Enabled = v
-end)
-addToggle(espTab, "Survivor ESP", true, function(v)
-    getgenv().ESP_Settings.Survivors = v
-end)
-addToggle(espTab, "Killer ESP", true, function(v)
-    getgenv().ESP_Settings.Killers = v
-end)
-addToggle(espTab, "Generator ESP", true, function(v)
-    getgenv().ESP_Settings.Generators = v
-end)
-addToggle(espTab, "ESP Boxes", true, function(v)
-    getgenv().ESP_Settings.Boxes = v
-end)
-
--- Generator Tab (With Stop / Exit fix)
-addToggle(genTab, "Auto Generator (AFK Farm)", false, function(v)
-    getgenv().AutoGenerator = v
-end)
-addToggle(genTab, "Auto Perfect Skill-Check", false, function(v)
+addToggleToCard(combatCard, "Auto Perfect Skill-Check", false, function(v)
     getgenv().AutoPerfectSkillCheck = v
 end)
 
-local stopGenBtn = Instance.new("TextButton")
-stopGenBtn.Size = UDim2.new(1, 0, 0, 40)
-stopGenBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-stopGenBtn.Font = Enum.Font.GothamBold
-stopGenBtn.Text = "STOP / EXIT AUTO GENERATOR"
-stopGenBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-stopGenBtn.TextSize = 13
-stopGenBtn.Parent = genTab
+-- 2. Legit / Generator Farm Tab
+local farmCard = createSectionCard(legitTab, "Auto Generator Farm", 140)
+addToggleToCard(farmCard, "Auto Generator (AFK Farm)", false, function(v)
+    getgenv().AutoGenerator = v
+    genStatusLbl.Text = v and "Farming Active" or "Stopped / Ready"
+    genStatusLbl.TextColor3 = v and Color3.fromRGB(39, 114, 238) or Color3.fromRGB(130, 145, 170)
+end)
+
+-- Stop Button inside Farm tab
+local stopCardBtn = Instance.new("TextButton")
+stopCardBtn.Size = UDim2.new(1, 0, 0, 32)
+stopCardBtn.BackgroundColor3 = Color3.fromRGB(180, 40, 40)
+stopCardBtn.Font = Enum.Font.GothamBold
+stopCardBtn.Text = "STOP / EXIT AUTO GENERATOR"
+stopCardBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+stopCardBtn.TextSize = 11
+stopCardBtn.Parent = legitTab
 
 local stopCorner = Instance.new("UICorner")
 stopCorner.CornerRadius = UDim.new(0, 6)
-stopCorner.Parent = stopGenBtn
+stopCorner.Parent = stopCardBtn
 
-stopGenBtn.MouseButton1Click:Connect(function()
+stopCardBtn.MouseButton1Click:Connect(function()
     getgenv().AutoGenerator = false
+    genStatusLbl.Text = "Stopped / Ready"
+    genStatusLbl.TextColor3 = Color3.fromRGB(130, 145, 170)
     pcall(function()
         if LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
             LocalPlayer.Character.Humanoid.PlatformStand = false
@@ -342,21 +571,50 @@ stopGenBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
--- Teleports Tab
-local tpGenBtn = Instance.new("TextButton")
-tpGenBtn.Size = UDim2.new(1, 0, 0, 40)
-tpGenBtn.BackgroundColor3 = Color3.fromRGB(50, 50, 70)
-tpGenBtn.Font = Enum.Font.GothamBold
-tpGenBtn.Text = "Teleport to Nearest Generator"
-tpGenBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
-tpGenBtn.TextSize = 13
-tpGenBtn.Parent = teleTab
+-- 3. Players & ESP Tab
+local espCard = createSectionCard(playersTab, "ESP / Wallhack Visuals", 210)
+addToggleToCard(espCard, "Enable ESP (Wallhack)", true, function(v)
+    getgenv().ESP_Settings.Enabled = v
+    espStatusLbl.Text = v and "Active" or "Disabled"
+end)
+addToggleToCard(espCard, "Survivor ESP", true, function(v)
+    getgenv().ESP_Settings.Survivors = v
+end)
+addToggleToCard(espCard, "Killer ESP", true, function(v)
+    getgenv().ESP_Settings.Killers = v
+end)
+addToggleToCard(espCard, "ESP Boxes", true, function(v)
+    getgenv().ESP_Settings.Boxes = v
+end)
+
+-- 4. World Tab
+local worldCard = createSectionCard(worldTab, "World & Objects ESP", 100)
+addToggleToCard(worldCard, "Generator ESP", true, function(v)
+    getgenv().ESP_Settings.Generators = v
+end)
+
+-- 5. Main & Farm Tab
+local mainCard = createSectionCard(mainMiscTab, "Misc Settings", 90)
+addToggleToCard(mainCard, "Anti AFK", true, function(v)
+    -- anti afk active
+end)
+
+-- 6. Teleports Tab
+local tpCard = createSectionCard(teleportTab, "Quick Teleport System", 100)
+local tpBtn = Instance.new("TextButton")
+tpBtn.Size = UDim2.new(1, 0, 0, 34)
+tpBtn.BackgroundColor3 = Color3.fromRGB(39, 114, 238)
+tpBtn.Font = Enum.Font.GothamBold
+tpBtn.Text = "Teleport to Nearest Generator"
+tpBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+tpBtn.TextSize = 12
+tpBtn.Parent = teleportTab
 
 local tpCorner = Instance.new("UICorner")
 tpCorner.CornerRadius = UDim.new(0, 6)
-tpCorner.Parent = tpGenBtn
+tpCorner.Parent = tpBtn
 
-tpGenBtn.MouseButton1Click:Connect(function()
+tpBtn.MouseButton1Click:Connect(function()
     pcall(function()
         local char = LocalPlayer.Character
         if not char or not char:FindFirstChild("HumanoidRootPart") then return end
@@ -370,11 +628,12 @@ tpGenBtn.MouseButton1Click:Connect(function()
     end)
 end)
 
--- Settings Tab
-addToggle(setTab, "Unload Script", false, function(v)
+-- 7. Configs & Settings Tab
+local setCard = createSectionCard(configsTab, "Script Management", 100)
+addToggleToCard(setCard, "Unload Script & GUI", false, function(v)
     if v then
         ScreenGui:Destroy()
     end
 end)
 
-print("Violence District Pro GUI loaded successfully.")
+print("Neverlose UI Panel for Violence District loaded successfully.")
